@@ -5,26 +5,26 @@
  */
 void print_to_98(int n)
 {
-	int i, j;
+	int num1, num2;
 
 	if (n <= 98)
 	{
-		for (i = n; i <= 98; i++)
+		for (num1 = n; num1 <= 98; num1++)
 		{
-			if (i != 98)
-				printf("%d,", i);
-			else if (i == 98)
-				printf("%d\n", i);
+			if (num1 != 98)
+				printf("%d,", num1);
+			else if (num1 == 98)
+				printf("%d\n", num1);
 		}
 	}
 	else if (n >= 98)
 	{
-		for (j = n; j >= 98; j--)
+		for (num2 = n; num2 >= 98; num2--)
 		{
-			if (j != 98)
-				printf("%d,", j);
-			else if (j == 98)
-				printf("%d\n", j);
+			if (num2 != 98)
+				printf("%d,", num2);
+			else if (num2 == 98)
+				printf("%d\n", num2);
 		}
 	}
 }
