@@ -1,4 +1,6 @@
 #include "main.h"
+#include <stdarg.h>
+int do_s(va_list args);
 /**
  * do_s - format conversion for string
  * @args: variadic argument

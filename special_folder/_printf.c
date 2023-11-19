@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdarg.h>
 /**
  * _printf - A function that Prints values based on
  * the specified specifier given by user
@@ -7,36 +8,34 @@
  */
 int _printf(const char *format, ...)
 {
-	unsigned int i, count = 0;
+	unsigned int i, count  = 0;
 	va_list ap;
 
 	va_start(ap, format);
+
 	for (i = 0; format[i] != '\0'; i++)
 	{
-		if (format[i] != 'c')
+		if (format[i + 1] == '%')
 		{
-			_putchar(format[i]);
-		}
-		else if (format[i + 1] == 'c')
-		{
-			char c = do_c(format[i]);
-
-			_putchar(c);
-			i++;
+			_putchar('%');
 		}
 		else if (format[i + 1] == 's')
 		{
-			char *str = do_s(format[i]);
-
+			do_s(va_arg(ap, char *));
 			write(1, str, do_s(str));
-			i++;
+			count++;
 		}
 		else if (format[i + 1] == '%')
 		{
 			_putchar('%');
 		}
-		count += 1;
+		else
+		{
+			write(1, format, format[i]);
+		}
 	}
+
 	va_end(ap);
+
 	return (count);
 }
