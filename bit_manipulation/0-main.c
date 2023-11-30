@@ -1,29 +1,23 @@
 #include <stdio.h>
+#include "main.h"
 /**
- * main - ......................
- * Return: 0 (success)
- */
+ ** main - check the code
+ **
+ ** Return: Always 0.
+ **/
 int main(void)
 {
-	unsigned int p = 60; /*60 = 0011 1100*/
-	unsigned int q = 13; /*13 = 0000 1101*/
+	unsigned int n;
 
-	int r = 0;
-	r = p | q;
-	printf("Bitwise OR operator of p & q is: %d\n", r);
-
-	r = p & q;
-	printf("Bitwise AND operator of p & q is: %d\n", r);
-
-	r = ~p;
-	printf("Bitwise complement of p is: %d\n", r);
-
-	r = p ^ q;
-	printf("Bitwise XOR of p & q is: %d\n", r);
-
-	r = p >> 2;
-	printf("Bitwise RIGHT SHIFT operator is: %d\n", r);
-
-	r = p << 2;
-	printf("Bitwise LEFT SHIFT operator is: %d\n", r);
+	n = binary_to_uint("1");
+	printf("%u\n", n);
+	n = binary_to_uint("101");
+	printf("%u\n", n);
+	n = binary_to_uint("1e01");
+	printf("%u\n", n);
+	n = binary_to_uint("1100010");
+	printf("%u\n", n);
+	n = binary_to_uint("0000000000000000000110010010");
+	printf("%u\n", n);
+	return (0);
 }
