@@ -28,7 +28,7 @@ void print_binary(unsigned long int n)
 
 	a = 0;
 
-	i = _pow(2, sizeof(unsigned long int) * 8 - 1);
+	i = num_power(2, sizeof(unsigned long int) * 8 - 1);
 	while (i != 0)
 	{
 		check = n & i;
