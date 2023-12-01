@@ -9,6 +9,7 @@ int main(void)
 	unsigned int q = 13; /*13 = 0000 1101*/
 
 	int r = 0;
+
 	r = p | q;
 	printf("Bitwise OR operator of p & q is: %d\n", r);
 
