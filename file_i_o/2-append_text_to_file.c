@@ -24,6 +24,6 @@ int append_text_to_file(const char *filename, char *text_content)
 		if (i == -1)
 			return (-1);
 	}
-	closse(fdp);
+	close(fdp);
 	return (1);
 }
