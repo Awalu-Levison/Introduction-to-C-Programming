@@ -1,4 +1,5 @@
 #include <string.h>
+#include <stdlib.h>
 #include <stdio.h>
 void print_token(char *str, char *delimitor);
 /**
@@ -23,15 +24,14 @@ void print_token(char *str, char *delimitor)
  */
 int main(void)
 {
-	int i = 0;
+	//int i = 0;
 	char *b;
+
 	printf("Enter string to tokenize\n");
-	scanf("%s", &b);
-	while (b[i] != '\0');
-	{
-		print_token(b, " ");
-		i++;
-	}
+	scanf("%s", b);
+
+	b = malloc(sizeof(char *));
+	print_token(b, " ");
 
 	return (0);
 }
