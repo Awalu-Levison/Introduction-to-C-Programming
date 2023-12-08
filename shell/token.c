@@ -9,8 +9,9 @@
  */
 int main(int argc, char **argv)
 {
-	char str[] = "Hello, World, This, is, Mr, Awalu, The Software_Engineer";
+	char str[] = " Hello, World, This, is, Mr, Awalu, The Software_Engineer";
 	char *token = strtok(str, ",");
+	int token_count = 0;
 
 	printf("Tokens of the string are :\n");
 	printf("=================================================\n");
@@ -18,6 +19,8 @@ int main(int argc, char **argv)
 	{
 		printf("#%s\n", token);
 		token = strtok(NULL, ",");
+		token_count++;
 	}
-	return (*token);
+	printf("The number of token is : %d\n", token_count);
+	return (0);
 }
