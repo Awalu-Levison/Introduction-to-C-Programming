@@ -23,11 +23,9 @@ void print_token(char *str, char *delimitor)
  */
 int main(void)
 {
-	//char s[] = "This is the art of tokenizing strings in C programming";
-
 	int i = 0;
-
 	char *b;
+	printf("Enter string to tokenize\n");
 	scanf("%s", &b);
 	while (b[i] != '\0');
 	{
