@@ -15,7 +15,6 @@ void print_token(char *str, char *delimitor)
 		printf("%s\n", token);
 		token = strtok(NULL, delimitor);
 	}
-	/*printf("___________________________________________\n");*/
 	printf("Finished\n");
 }
 /**
@@ -24,10 +23,20 @@ void print_token(char *str, char *delimitor)
  */
 int main(void)
 {
+	char s[] = "Do hard things";
+	print_token(s, " ");
 
 	char a[] = "Do hard things!";
-	printf("=====Original str:<< %s>>=====\n", a);
+	print_token(a, ",");
 
-	print_token(a, " ");
+	char b[] = "ABC";
+	print_token(b, "ABC");
+
+	char d[] = "      ";
+	print_token(d, " , ");
+
+	char e[] = "abc             hard           ";
+	print_token(e, "   ");
+
 	return (0);
 }
