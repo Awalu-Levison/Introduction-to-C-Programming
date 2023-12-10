@@ -1,4 +1,5 @@
 #include <string.h>
+#include <stdlib.h>
 #include <stdio.h>
 void print_token(char *str, char *delimitor);
 /**
@@ -9,7 +10,7 @@ void print_token(char *str, char *delimitor);
  */
 void print_token(char *str, char *delimitor)
 {
-	char *token = strtok(str, delimitor);
+	char *token = strtok((char *)str, delimitor);
 	while (token != NULL)
 	{
 		printf("%s\n", token);
