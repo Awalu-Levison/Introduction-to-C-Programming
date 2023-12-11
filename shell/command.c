@@ -1,17 +1,47 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+
+char **tokenize(char *command, char *delim)
+{
+	char **argv;
+	char *copycommand = strdup(command);
+	char *copycommand2 = strdup(command);
+	int num_tokens = 0;
+
+	char *token = strtok(copycommand, delim);
+	while (token != NULL)
+	{
+		num_tokens++;
+		token = strtok(NULL, delim);
+	}
+	argv = malloc((num_tokens + 1) * sizeof(char *));
+	token = strtok(copycommand2, delim);
+	int i = 0;
+	while (token != NULL)
+	{
+		argv[i] = malloc(strlen(token + 1) * sizeof(char));
+		strcpy(argv[i], token);
+		i++;
+	}
+
+	argv[i] = NULL;
+	free(copycommand);
+	free(copycommand2);
+
+	return (argv);
+}
+
 /**
- * main - A function that create a command prompt
- * and display the command input by the user
- * via the standard input
- * Return: 0 (Always success).
+ * main - Getline function in action
+ * Return: 0 on success
  */
 int main(void)
 {
 	while (1)
 	{
 		printf("$ Enter Your command\n");
-
 		char *command = NULL;
 		size_t n = 0;
 		int nread = 0;
@@ -23,6 +53,12 @@ int main(void)
 			exit(1);
 		}
 		printf("Your command is: %s", command);
+
+		char **argv = tokenize(command, " \n\t");
+		if (execve(argv[0], argv, NULL) == -1)
+		{
+			perror("Error:");
+		}
 	}
 	return (0);
 }
