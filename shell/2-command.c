@@ -17,8 +17,8 @@ char **tokenize(char *command, char *delim)
 	}
 
 	argv = malloc((num_tokens + 1) * sizeof(char *));
-	// Reset copycommand and token
 	
+	// Reset copycommand and token
 	free(copycommand);
 	copycommand = strdup(command);
 	token = strtok(copycommand, delim);
@@ -26,6 +26,7 @@ char **tokenize(char *command, char *delim)
 	while (token != NULL)
 	{
 		argv[i] = malloc(strlen(token) + 1);
+
 		// Fix memory allocation size
 		strcpy(argv[i], token);
 		i++;
@@ -35,6 +36,7 @@ char **tokenize(char *command, char *delim)
 	free(copycommand);
 	return argv;
 }
+
 /**
  * main - Getline function in action
  * Return: 0 on success
@@ -59,8 +61,9 @@ int main(void)
 		char **argv = tokenize(command, " \n\t");
 		if (execvp(argv[0], argv) == -1)
 		{
-		perror("Error:");
+			perror("Error:");
 		}
+
 		// Free allocated memory for argv
 		for (int i = 0; argv[i] != NULL; i++)
 		{
