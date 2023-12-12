@@ -64,7 +64,7 @@ int main(void)
 			perror("Error:");
 		}
 
-		// Free allocated memory for argv
+		/* Free allocated memory for argv*/
 		for (int i = 0; argv[i] != NULL; i++)
 		{
 			free(argv[i]);
