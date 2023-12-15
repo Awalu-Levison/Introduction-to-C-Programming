@@ -40,10 +40,10 @@ int _printf(const char *format, ...)
 			{
 				char *str = va_arg(ap, char *);
 
-				write(1, str, strlen(str));
-				i = (atoi)(i + strlen);
+				i += write(1, str, _strlen(str));
 			}
 		}
+		format++;
 	}
 	va_end(ap);
 	return (i);
