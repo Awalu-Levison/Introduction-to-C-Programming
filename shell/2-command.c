@@ -7,6 +7,7 @@ char **tokenize(char *command, char *delim)
 {
 	char **argv;
 	char *copycommand = strdup(command);
+	char *copycommand2 = strdup(command);
 	int num_tokens = 0;
 
 	char *token = strtok(copycommand, delim);
@@ -19,9 +20,9 @@ char **tokenize(char *command, char *delim)
 	argv = malloc((num_tokens + 1) * sizeof(char *));
 	
 	// Reset copycommand and token
-	free(copycommand);
-	copycommand = strdup(command);
-	token = strtok(copycommand, delim);
+	//free(copycommand);
+	//copycommand2 = strdup(command);
+	token = strtok(copycommand2, delim);
 	int i = 0;
 	while (token != NULL)
 	{
@@ -32,8 +33,10 @@ char **tokenize(char *command, char *delim)
 		i++;
 		token = strtok(NULL, delim);
 	}
+
 	argv[i] = NULL;
-	free(copycommand);
+	//free(copycommand);
+	//free(copycommand2);
 	return argv;
 }
 
@@ -64,12 +67,12 @@ int main(void)
 			perror("Error:");
 		}
 
-		/* Free allocated memory for argv*/
+		/* Free allocated memory for argv
 		for (int i = 0; argv[i] != NULL; i++)
 		{
 			free(argv[i]);
 		}
-		free(argv);
+		free(argv);*/
 	}
 	return 0;
 }
