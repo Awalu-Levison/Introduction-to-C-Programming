@@ -4,7 +4,11 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <string.h>
-
+/**
+ * main - Super simple shell exercise
+ *
+ * Return: 0 Upon success
+ */
 int main(void)
 {
 	size_t buffer_size = 0;
@@ -25,6 +29,7 @@ int main(void)
 			perror("Error:");
 			exit(EXIT_FAILURE);
 		}
+
 		token = strtok(buffer, "\t\n");
 		array = malloc(sizeof(char *) * 1024);
 
@@ -34,6 +39,7 @@ int main(void)
 			token = strtok(NULL, "\t\n");
 			i++;
 		}
+
 		array[i] = NULL;
 		child_pid = fork();
 
