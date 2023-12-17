@@ -26,8 +26,7 @@ int main(void)
 		if (nread == -1)
 		{
 			free(buffer);
-			perror("Error:");
-			exit(EXIT_FAILURE);
+			exit(1);
 		}
 
 		token = strtok(buffer, "\t\n");
