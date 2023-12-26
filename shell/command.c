@@ -64,7 +64,7 @@ int main(void)
 		}
 		printf("Your command is: %s", command);
 
-		char **argv = tokenize(command, " \n\t");
+		char **argv = tokenize(command, " ");
 		pid_t child_pid = fork();
 		int status;
 

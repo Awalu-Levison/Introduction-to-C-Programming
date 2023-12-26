@@ -24,6 +24,7 @@ int main(int ac, char **av)
 		if (stat(av[i], &st) == 0)
 		{
 			printf(" FOUND\n");
+			//printf("Path is: %s\n", av[i]);
 		}
 
 		else
