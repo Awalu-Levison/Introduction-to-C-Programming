@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  * @format: Format the output data
  * Return: Interger value
@@ -28,15 +29,20 @@ int _printf(const char *format, ...)
 		/*Handling string*/
 		else if (format[i + 1] == 's')
 		{
-			char *s = va_arg(args, char *);
+			char *mystr = va_arg(args, char *);
 
-			int x = write(1, s, _strlen(s));
+			int x = str_print(mystr);
 			j += (x - 1);
 			i++;
 		}
 		else if (format[i + 1] == '%')
 		{
 			putchr('%');
+			i++;
+		}
+		else if ((format[i + 1] == 'd') || (format[i + 1] == 'i'))
+		{
+			putchr(va_arg(args, int) + '0');
 			i++;
 		}
 		j += 1;

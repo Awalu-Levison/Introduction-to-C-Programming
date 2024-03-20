@@ -8,16 +8,19 @@ int main(void)
 	char letter = 'a';
 	char name[] = "Awalu";
 	int r_val1, r_val2;
+	int age = 5;
 
  /*Using C printf() standard function*/
-	puts("------------\nUsing printf()\n----------------");
+	puts("\n-------Using printf()--------\n");
 	r_val1 = printf("%s did %c 100%% Good job\n", name, letter);
+	//r_val1 += printf("Awalu is aged %d in std1\n", age);
 	printf("r_val1 is :%d\n", r_val1);
 
  /*Using user defined putchr() function*/
-	puts("------------\nUsing putchr()\n----------------");
+	_printf("\n-------Using _printf()--------\n");
 	r_val2 = _printf("%s did %c 100%% Good job\n", name, letter);
-	printf("r_val2 is :%d\n", r_val2);
+	//r_val2 += _printf("Awalu is aged %d in std1\n", age);
+	_printf("r_val2 is :%d\n", r_val2);
 
 	return (0);
 }
