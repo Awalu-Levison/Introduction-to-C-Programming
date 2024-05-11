@@ -17,6 +17,6 @@ int str_print(char *s)
 			count += 1;
 		}
 	}
-	putchr('\n');
+	/*putchr('\n');*/
 	return (count);
 }
