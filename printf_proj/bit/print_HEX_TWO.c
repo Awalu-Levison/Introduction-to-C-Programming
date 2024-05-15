@@ -1,10 +1,10 @@
 #include "main.h"
 /**
- * print_hex - A program that print integers in hexadecimal format
+ * print_HEX - A program that print integers in hexadecimal format
  * @val: Variadic type of arguments
  * Return: The number of bits printed
  */
-int print_hex1(va_list val)
+int print_HEX2(va_list val)
 {
 	int i, counter = 0;
 	int *array;
@@ -31,7 +31,7 @@ int print_hex1(va_list val)
 	for (i = counter - 1; i >= 0; i--)
 	{
 		if (array > 9)
-			array[i] = array[i] + 39;
+			array[i] = array[i] + 7;
 		_putchar(array[i] + '0');
 	}
 	free(array);

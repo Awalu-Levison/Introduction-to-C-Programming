@@ -28,5 +28,11 @@ int print_ext_str(va_list val)
 			}
 			len = len + print_HEX2(value);
 		}
+		else
+		{
+			_putchar([i]);
+			len++;
+		}
 	}
+	return (len);
 }

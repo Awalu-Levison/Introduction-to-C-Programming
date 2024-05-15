@@ -1,16 +1,14 @@
 #include "main.h"
 /**
- * print_HEX - A program that print integers in hexadecimal format
- * @val: Variadic type of arguments
+ * print_hex_value - A program that print a converted hexadecimal value
+ * @num: unsigned long integer variable
  * Return: The number of bits printed
  */
-int print_HEX(va_list val)
+int print_hex_pointer(unsigned long int num)
 {
-	int i, counter = 0;
-	int *array;
-
-	unsigned int num = va_arg(val, unsigned int);
-	unsigned temp = num;
+	long int i, counter = 0;
+	long int *array;
+	unsigned long int temp = num;
 
 	while (num / 16 != 0)
 	{
@@ -19,7 +17,7 @@ int print_HEX(va_list val)
 	}
 	counter++;
 
-	array = malloc(sizeof(int) * counter);
+	array = malloc(sizeof(long int) * counter);
 	if (array == NULL)
 		return (NULL);
 
@@ -31,7 +29,7 @@ int print_HEX(va_list val)
 	for (i = counter - 1; i >= 0; i--)
 	{
 		if (array > 9)
-			array[i] = array[i] + 7;
+			array[i] = array[i] + 39;
 		_putchar(array[i] + '0');
 	}
 	free(array);

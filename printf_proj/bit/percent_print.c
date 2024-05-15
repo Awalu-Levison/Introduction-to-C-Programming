@@ -1,9 +1,9 @@
 #include "main.h"
 /**
- * print_% - Print a % sign
+ * print_percent - Print a % sign
  * Return: 1 on success
  */
-int print_%(void)
+int print_percent(void)
 {
 	_putchar(37);
 	return (1);

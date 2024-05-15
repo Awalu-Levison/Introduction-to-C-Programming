@@ -6,5 +6,6 @@
  */
 int _printf(const char *format, ...)
 {
-	gdfsvg
+	match m[] = {
+		{"%c", print_char}, {"%s", print_str}, {"%%", percent_print}, {"%d", print_dec}, {"%i", print_int}, {"%b", print_bin}, {"%u", print_unsigned}, {"%o", print_oct}, {"%x", }, {}, {}, {}, {},
 }
