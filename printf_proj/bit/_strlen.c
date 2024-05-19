@@ -12,7 +12,6 @@ int _strlen(char *s)
 	while (*s != '\0')
 	{
 		length++;
-		i++;
 	}
 	return (length);
 	return (0);
@@ -22,14 +21,13 @@ int _strlen(char *s)
  * @s: Parameter to be used
  * Return: 0 on successful execution
  */
-int _strlen(const char *s)
+int _strlen2(const char *s)
 {
 	int length = 0;
 
 	while (*s != '\0')
 	{
 		length++;
-		i++;
 	}
 	return (length);
 }

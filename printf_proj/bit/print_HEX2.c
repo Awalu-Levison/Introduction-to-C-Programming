@@ -20,9 +20,6 @@ int print_HEX2(unsigned int num)
 	counter++;
 
 	array = malloc(sizeof(int) * counter);
-	if (array == NULL)
-		return (NULL);
-
 	for (i = 0; i < counter; i++)
 	{
 		array[i] = temp % 16;

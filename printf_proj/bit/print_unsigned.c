@@ -37,7 +37,7 @@ int print_unsigned(va_list args)
 			exp = exp / 10;
 			i++;
 		}
-		_putchar(last + '0');
+		_putchar(last_n + '0');
 	}
 	return (i);
 }

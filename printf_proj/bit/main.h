@@ -5,6 +5,7 @@
 #include <stdarg.h>
 #include <unistd.h>
 #include <limits.h>
+
 /**
  * struct format - A structure for the format specifier
  * @id: A reference to the particular format
@@ -19,22 +20,21 @@ typedef struct format
 } match;
 
 int _putchar(char c);
-int print_c(va_list val);
+int print_char(va_list val);
 int print_str(va_list val);
 int _printf(const char *format, ...);
 int _strlen(char *s);
-int _strlen(const char *s);
+int _strlen2(const char *s);
 int print_percent(void);
 int print_dec(va_list args);
 int print_int(va_list args);
 int print_bin(va_list val);
 int print_unsigned(va_list args);
 int print_oct(va_list val);
-int print_hex1(va_list val); //hex1
-int print_HEX2(va_list val); //hex2
+int print_hex1(va_list val);
+int print_HEX2(va_list val);
 int print_hex_pointer(unsigned long int num);
 int print_rot13(va_list val);
-
-
+int print_ext_str(va_list val);
 
 #endif /*Header file*/

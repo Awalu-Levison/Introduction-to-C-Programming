@@ -4,7 +4,7 @@
  * @val: Arguments
  * Return: 1 baesd on the size of character
  */
-int print_c(va_list val)
+int print_char(va_list val)
 {
 	char mychar;
 

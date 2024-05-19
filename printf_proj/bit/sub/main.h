@@ -14,6 +14,10 @@ void print_diagsums(int *a, int size);
 void set_string(char **s, char *to);
 void reverse_array(int *a, int n);
 void print_chessboard(char (*a)[8]);
-
+char *rot13(char *s);
+char *cap_string(char *);
+void print_buffer(char *b, int size);
+void print_line(char *c, int s, int l);
+char *string_toupper(char *);
 
 #endif

@@ -10,27 +10,27 @@ int print_ext_str(va_list val)
 	char *str;
 	int value;
 
-	s = va_arg(val, char *);
-	if (s == NULL)
-		s = "((null))";
-	for (i = 0; s[i] != '\0'; i++)
+	str = va_arg(val, char *);
+	if (str == NULL)
+		str = "((null))";
+	for (i = 0; str[i] != '\0'; i++)
 	{
-		if (s[i] < 32 || s[i] >= 127)
+		if (str[i] < 32 || str[i] >= 127)
 		{
 			_putchar('\\');
 			_putchar('x');
 			len = len + 2;
-			value = s[i];
+			value = str[i];
 			if (value < 16)
 			{
 				_putchar('0');
 				len++;
 			}
 			len = len + print_HEX2(value);
-		}
+		
 		else
 		{
-			_putchar([i]);
+			_putchar(str[i]);
 			len++;
 		}
 	}

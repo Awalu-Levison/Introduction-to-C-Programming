@@ -18,9 +18,6 @@ int print_hex_pointer(unsigned long int num)
 	counter++;
 
 	array = malloc(sizeof(long int) * counter);
-	if (array == NULL)
-		return (NULL);
-
 	for (i = 0; i < counter; i++)
 	{
 		array[i] = temp % 16;

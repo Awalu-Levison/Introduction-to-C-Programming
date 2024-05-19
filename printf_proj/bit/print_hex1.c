@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * print_hex - A program that print integers in hexadecimal format
+ * print_hex1 - A program that print integers in hexadecimal format
  * @val: Variadic type of arguments
  * Return: The number of bits printed
  */
@@ -20,9 +20,6 @@ int print_hex1(va_list val)
 	counter++;
 
 	array = malloc(sizeof(int) * counter);
-	if (array == NULL)
-		return (NULL);
-
 	for (i = 0; i < counter; i++)
 	{
 		array[i] = temp % 16;

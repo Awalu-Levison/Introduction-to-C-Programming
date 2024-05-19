@@ -10,11 +10,11 @@ int print_rev(va_list val)
 	int i;
 	int j = 0;
 
-	if (s == NULL)
-		s = "(null)";
-	while (s[j] != '\0')
+	if (mystr == NULL)
+		mystr = "(null)";
+	while (mystr[j] != '\0')
 		j++;
 	for (i = j - 1; i >= 0; i--)
-		_putchar(s[i]);
+		_putchar(mystr[i]);
 	return (j);
 }
