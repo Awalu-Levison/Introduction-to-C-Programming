@@ -1,6 +1,7 @@
 #ifndef MAIN_H
 #define MAIN_H
-
+#include <stdarg.h>
+#include <unistd.h>
 
 int _putchar(char c);
 char *_memset(char *s, char b, unsigned int n);
@@ -19,5 +20,6 @@ char *cap_string(char *);
 void print_buffer(char *b, int size);
 void print_line(char *c, int s, int l);
 char *string_toupper(char *);
+int print_bin(va_list val);
 
 #endif

@@ -10,7 +10,7 @@ int print_hex1(va_list val)
 	int *array;
 
 	unsigned int num = va_arg(val, unsigned int);
-	unsigned temp = num;
+	unsigned int temp = num;
 
 	while (num / 16 != 0)
 	{
@@ -18,16 +18,16 @@ int print_hex1(va_list val)
 		counter++;
 	}
 	counter++;
-
 	array = malloc(sizeof(int) * counter);
+
 	for (i = 0; i < counter; i++)
 	{
 		array[i] = temp % 16;
-		temp = temp / 16;
+		temp /= 16;
 	}
 	for (i = counter - 1; i >= 0; i--)
 	{
-		if (array > 9)
+		if (array[i] > 9)
 			array[i] = array[i] + 39;
 		_putchar(array[i] + '0');
 	}

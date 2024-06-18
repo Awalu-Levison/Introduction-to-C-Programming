@@ -32,9 +32,12 @@ int print_bin(va_list val);
 int print_unsigned(va_list args);
 int print_oct(va_list val);
 int print_hex1(va_list val);
-int print_HEX2(va_list val);
 int print_hex_pointer(unsigned long int num);
 int print_rot13(va_list val);
 int print_ext_str(va_list val);
+int print_rev(va_list val);
+int print_pointer(va_list val);
+
+
 
 #endif /*Header file*/

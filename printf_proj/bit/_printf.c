@@ -11,9 +11,8 @@ int _printf(const char *format, ...)
 		{"%%", print_percent},
 		{"%d", print_dec}, {"%i", print_int}, {"%b", print_bin},
 		{"%u", print_unsigned}, {"%o", print_oct},
-		{"%x", print_hex1},
-		{"%X", print_HEX2},
-		{"%S", task5}, {"%p", print_pointer},
+		{"%x", print_hex1}, {"%X", print_HEX2},
+		{"%S", print_ext_str}, {"%p", print_pointer},
 		{"%r", print_rev}, {"%R", print_rot13}
 	};
 
