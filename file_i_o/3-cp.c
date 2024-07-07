@@ -1,75 +1,72 @@
-#include <sys/stat.h>
-#include <stdlib.h>
-#include <sys/types.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdio.h>
-void checker(int src, int dest, char *argv[]);
+#include "main.h"
+void checker(int fd, int state, char *filename, char mode);
 /**
- * checker - A function that Checks for errors on file
- * @src: The source file
- * @dest: The destination file
- * @argv: Arguments passed to the function
- * Return: nothing
+ * checker - Checking if file can be opened or closed
+ * @fd: File descriptor
+ * @filename: Pointer to the actual name
+ * @mode: The file access mode
+ * @state: The state of the file
  */
-void checker(int src, int dest, char *argv[])
+void checker(int fd, int state, char *filename, char mode)
 {
-	if (src == -1)
+	if (mode == 'C' && state == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
+		exit(100);
+	}
+	else if (mode == 'O' && state == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", filename);
 		exit(98);
 	}
-	if (dest == -1)
+	else if (mode == 'w' && state == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", filename);
 		exit(99);
 	}
 }
+
 /**
- * main - Copying content between two files
- * @argc: Counting the number of arguments
- * @argv: The actual arguments passed to the function
- * Return: 0 on success
+ * main - A program that copies the content of a file to another file
+ * @argc: Number of arguments
+ * @argv: The actua; args
+ * Return: 0
  */
 int main(int argc, char *argv[])
 {
-	int src, dest, closer;
-	ssize_t n_char, n_write;
+	int src, dest, close_dest, close_src, file_write, n = 1024;
+
+	unsigned int mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
+
 	char buffer[1024];
 
 	if (argc != 3)
 	{
-		dprintf(STDERR_FILENO, "%s\n", "Usage: cp file_from file_to");
+		dprintf(STDERR_FILENO, "%s", "Usage: cp file_from file_to");
 		exit(97);
 	}
+
 	src = open(argv[1], O_RDONLY);
-	dest = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC | O_APPEND, 0664);
-	checker(src, dest, argv);
+	checker(src, -1, argv[1], 'O');
 
-	n_char = 1024;
-	while (n_char == 1024)
+	dest = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, mode);
+	checker(dest, -1, argv[2], 'W');
+
+	while (n == 1024)
 	{
-		n_char = read(src, buffer, 1024);
-		if (n_char == -1)
-			checker(-1, 0, argv);
-		n_write = write(dest, buffer, 1024);
-		if (n_write == -1)
-			checker(0, -1, argv);
+		n = read(src, buffer, 1024);
+		if (n == -1)
+			checker(-1, -1, argv[1], 'O');
+		file_write = write(dest, buffer, n);
+		if (file_write == -1)
+			checker(-1, -1, argv[2], 'W');
+		if (file_write != n)
+			file_write = -1;
+		checker(-1, -1, argv[2], 'W');
 	}
-
-	closer = close(src);
-	if (closer == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", src);
-		exit(100);
-	}
-
-	closer = close(dest);
-	if (closer == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", dest);
-		exit(100);
-	}
-
+	close_src = close(src);
+	checker(close_src, src, NULL, 'C');
+	close_dest = close(dest);
+	checker(close_dest, dest, NULL, 'C');
 	return (0);
 }
